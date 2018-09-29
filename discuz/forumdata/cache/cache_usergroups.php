@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 28, 2018, 18:35
+//Created: Sep 29, 2018, 7:17
 //Identify: 22a92c41667b8c1fca06006df0d96cfb
 
 $_DCACHE['usergroups'] = array (

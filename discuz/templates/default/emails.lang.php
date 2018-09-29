@@ -4,13 +4,16 @@
 // Translated by Crossday
 
 // ATTENTION: Please add slashes(\) before single & double quotes( ' & " )
-$language = array(
-    'moderate_member_invalidate' => '否决',
-    'moderate_member_delete' => '删除',
-    'moderate_member_validate' => '通过',
-    
-    'get_passwd_subject' => '取回密码说明',
-    'get_passwd_message' => '
+
+$language = array
+(
+	'moderate_member_invalidate' => '否决',
+	'moderate_member_delete' => '删除',
+	'moderate_member_validate' => '通过',
+
+
+	'get_passwd_subject' =>		'取回密码说明',
+	'get_passwd_message' =>		'
 $member[username]，
 这封信是由 $bbname 发送的。
 
@@ -46,9 +49,10 @@ $member[username]，
 
 $bbname 管理团队.
 $boardurl',
-    
-    'email_verify_subject' => 'Email 地址验证',
-    'email_verify_message' => '
+
+
+	'email_verify_subject' =>	'Email 地址验证',
+	'email_verify_message' =>	'
 $discuz_userss ，
 这封信是由 $bbname 发送的。
 
@@ -77,9 +81,10 @@ $discuz_userss ，
 
 $bbname 管理团队.
 $boardurl',
-    
-    'email_notify_subject' => '《$thread[subject]》新回复通知',
-    'email_notify_message' => '
+
+
+	'email_notify_subject' =>	'《$thread[subject]》新回复通知',
+	'email_notify_message' =>	'
 您好，
 这封信是由 $bbname 发送的。
 
@@ -108,9 +113,10 @@ URL:  {$boardurl}viewthread.php?tid=$thread[tid]
 
 $bbname 管理团队.
 $boardurl',
-    
-    'add_member_subject' => '您被添加成为会员',
-    'add_member_message' => '
+
+
+	'add_member_subject' =>		'您被添加成为会员',
+	'add_member_message' => 	'
 $newusername ，
 这封信是由 $bbname 发送的。
 
@@ -141,9 +147,10 @@ $newusername ，
 
 $bbname 管理团队.
 $boardurl',
-    
-    'birthday_subject' => '祝您生日快乐',
-    'birthday_message' => '
+
+
+	'birthday_subject' =>		'祝您生日快乐',
+	'birthday_message' => 		'
 $member[username]，
 这封信是由 $bbname 发送的。
 
@@ -161,9 +168,10 @@ $member[username]，
 
 $bbname 管理团队.
 $boardurl',
-    
-    'email_to_friend_subject' => '$discuz_userss 推荐给您: $thread[subject]',
-    'email_to_friend_message' => '
+
+
+	'email_to_friend_subject' =>	'$discuz_userss 推荐给您: $thread[subject]',
+	'email_to_friend_message' =>	'
 这封信是由 $bbname 的 $discuz_userss 发送的。
 
 您收到这封邮件，是因为在 $discuz_userss 通过 $bbname 的“推荐给朋友”
@@ -185,9 +193,9 @@ $message
 
 欢迎您访问 $bbname
 $boardurl',
-    
-    'email_to_invite_subject' => '您的朋友 $discuz_userss 发送 $bbname 论坛注册邀请码给您',
-    'email_to_invite_message' => '
+
+	'email_to_invite_subject' =>	'您的朋友 $discuz_userss 发送 $bbname 论坛注册邀请码给您',
+	'email_to_invite_message' =>	'
 $sendtoname,
 这封信是由 $bbname 的 $discuz_userss 发送的。
 
@@ -210,9 +218,10 @@ $message
 
 欢迎您访问 $bbname
 $boardurl',
-    
-    'moderate_member_subject' => '用户审核结果通知',
-    'moderate_member_message' => '
+
+
+	'moderate_member_subject' =>	'用户审核结果通知',
+	'moderate_member_message' =>	'
 $member[username] ，
 这封信是由 $bbname 发送的。
 

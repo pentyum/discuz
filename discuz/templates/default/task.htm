@@ -1,19 +1,19 @@
 {subtemplate header}
-<div id="nav">
-	<a href="$indexname">$bbname</a> &raquo; {lang task}
-</div>
+<div id="nav"><a href="$indexname">$bbname</a> &raquo; {lang task}</div>
 <div id="wrap" class="wrap with_side s_clear">
 	<div class="main">
 		<div class="content">
-			<!--{if empty($action)}-->
+		<!--{if empty($action)}-->
 			{subtemplate task_list}
-			<!--{elseif $action == 'view'}-->
+		<!--{elseif $action == 'view'}-->
 			{subtemplate task_detail}
-			<!--{/if}-->
+		<!--{/if}-->
 
 		</div>
 	</div>
-	<div class="side">{subtemplate personal_navbar}</div>
+	<div class="side">
+		{subtemplate personal_navbar}
+	</div>
 </div>
 <script type="text/javascript" reload="1">
 	function tasknoticewin(taskid) {

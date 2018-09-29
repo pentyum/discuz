@@ -1,54 +1,42 @@
 {template header}
 <!--{if empty($infloat)}-->
-<div id="nav">
-	<a href="$indexname">$bbname</a> $navigation
-</div>
+<div id="nav"><a href="$indexname">$bbname</a> $navigation</div>
 <div id="wrap" class="wrap s_clear">
-	<div class="main">
-		<div class="content nofloat">
-			<!--{/if}-->
+	<div class="main"><div class="content nofloat">
+<!--{/if}-->
 
-			<div class="fcontent">
-				<div style="display: none">
-					<ul id="fs_group">$grouplist
-					</ul>
-					<ul id="fs_forum_common">$commonlist
-					</ul>
-					<!--{loop $forumlist $forumid $forum}-->
-					<ul id="fs_forum_$forumid">$forum
-					</ul>
-					<!--{/loop}-->
-					<!--{loop $subforumlist $forumid $forum}-->
-					<ul id="fs_subforum_$forumid">$forum
-					</ul>
-					<!--{/loop}-->
-				</div>
-				<h3 class="float_ctrl">
-					<em>{lang nav}</em> <span> <!--{if !empty($infloat)}-->
-						<a href="javascript:;" class="float_close"
-						onclick="hideWindow('nav')" title="{lang close}">{lang close}</a>
-					<!--{/if}-->
-					</span>
-				</h3>
-				<div class="postbox">
-					<p class="s_clear">
-						<button class="right" id="postbtn"
-							onclick="hideWindow('nav');showWindow('newthread', 'post.php?action=newthread&fid=' + selectfid);"
-							disabled="disabled">{lang send_posts}</button>
-						<button class="right" id="enterbtn"
-							onclick="locationforums(currentblock, currentfid)"
-							disabled="disabled">{lang nav_forum}</button>
-						<span class="switchnav">$bbname<span id="switchnav"></span></span>
-					</p>
-					<ul class="postboardlist s_clear">
-						<li id="block_group"></li>
-						<li id="block_forum"></li>
-						<li id="block_subforum"></li>
-					</ul>
-				</div>
-			</div>
+<div class="fcontent">
+	<div style="display: none">
+	<ul id="fs_group">$grouplist</ul>
+	<ul id="fs_forum_common">$commonlist</ul>
+	<!--{loop $forumlist $forumid $forum}-->
+		<ul id="fs_forum_$forumid">$forum</ul>
+	<!--{/loop}-->
+	<!--{loop $subforumlist $forumid $forum}-->
+		<ul id="fs_subforum_$forumid">$forum</ul>
+	<!--{/loop}-->
+	</div>
+	<h3 class="float_ctrl">
+		<em>{lang nav}</em>
+		<span>
+			<!--{if !empty($infloat)}--><a href="javascript:;" class="float_close" onclick="hideWindow('nav')" title="{lang close}">{lang close}</a><!--{/if}-->
+		</span>
+	</h3>
+	<div class="postbox">
+		<p class="s_clear">
+			<button class="right" id="postbtn" onclick="hideWindow('nav');showWindow('newthread', 'post.php?action=newthread&fid=' + selectfid);" disabled="disabled">{lang send_posts}</button>
+			<button class="right" id="enterbtn" onclick="locationforums(currentblock, currentfid)" disabled="disabled">{lang nav_forum}</button>
+			<span class="switchnav">$bbname<span id="switchnav"></span></span>
+		</p>
+		<ul class="postboardlist s_clear">
+			<li id="block_group"></li>
+			<li id="block_forum"></li>
+			<li id="block_subforum"></li>
+		</ul>
+	</div>
+</div>
 
-			<script type="text/javascript" reload="1">
+<script type="text/javascript" reload="1">
 var s = '<p><a id="commonforum" href="javascript:;" onclick="switchforums(this, 1, \'common\')" class="hassubboard lightlink">{lang nav_forum_frequently}</a></p>';
 var lis = $('fs_group').getElementsByTagName('LI');
 for(i = 0;i < lis.length;i++) {
@@ -123,9 +111,8 @@ function locationforums(block, fid) {
 
 </script>
 
-			<!--{if empty($infloat)}-->
-		</div>
-	</div>
+<!--{if empty($infloat)}-->
+	</div></div>
 </div>
 <!--{/if}-->
 {template footer}

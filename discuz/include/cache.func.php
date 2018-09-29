@@ -9,6 +9,7 @@
 define('DISCUZ_KERNEL_VERSION', '7.2');
 define('DISCUZ_KERNEL_RELEASE', '20091126');
 
+
 function updatecache($cachename = '')
 {
     global $db, $bbname, $tablepre, $maxbdays;
@@ -402,7 +403,14 @@ function writetocache($script, $cachenames, $cachedata = '', $prefix = 'cache_')
         exit('Can not write to cache files, please check directory ./forumdata/ and ./forumdata/cache/ .');
     }
 }
-
+function get_data_strtolower($match,$action=0){
+    static $data=null;
+    if($action==1){
+        $data=$match;
+    }else{
+        return $data[strtolower($match[1])];
+    }
+}
 function writetocsscache($data)
 {
     $cssdata = '';
@@ -450,7 +458,9 @@ function writetocsscache($data)
                 fclose($fp);
             }
         }
-        $cssdata = preg_replace("/\{([A-Z0-9]+)\}/e", '\$data[strtolower(\'\1\')]', $cssdata);
+        get_data_strtolower($data,1);
+        $cssdata = preg_replace_callback("/\{([A-Z0-9]+)\}/", "get_data_strtolower", $cssdata);
+        //$cssdata = preg_replace("/\{([A-Z0-9]+)\}/e", '\$data[strtolower(\'\1\')]', $cssdata);
         $cssdata = preg_replace("/<\?.+?\?>\s*/", '', $cssdata);
         $cssdata = ! preg_match('/^http:\/\//i', $data['styleimgdir']) ? str_replace("url(\"$data[styleimgdir]", "url(\"../../$data[styleimgdir]", $cssdata) : $cssdata;
         $cssdata = ! preg_match('/^http:\/\//i', $data['styleimgdir']) ? str_replace("url($data[styleimgdir]", "url(../../$data[styleimgdir]", $cssdata) : $cssdata;

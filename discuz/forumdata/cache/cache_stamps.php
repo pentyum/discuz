@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 28, 2018, 18:35
+//Created: Sep 29, 2018, 7:17
 //Identify: 76e087b2f7379b11816eef57155d7f06
 
 $_DCACHE['stamps'] = array (

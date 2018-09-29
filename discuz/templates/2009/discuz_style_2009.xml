@@ -11,20 +11,16 @@
 		<item id="directory"><![CDATA[./templates/2009]]></item>
 		<item id="copyright"><![CDATA[康盛创想（北京）科技有限公司]]></item>
 		<item id="style">
-			<item id="available"><![CDATA[]]>
-			</item>
+			<item id="available"><![CDATA[]]></item>
 			<item id="boardimg"><![CDATA[logo.png]]></item>
-			<item id="imgdir"><![CDATA[]]>
-			</item>
+			<item id="imgdir"><![CDATA[]]></item>
 			<item id="styleimgdir"><![CDATA[templates/2009/images]]></item>
 			<item id="stypeid"><![CDATA[1]]></item>
-			<item id="headerbgcolor"><![CDATA[]]>
-			</item>
+			<item id="headerbgcolor"><![CDATA[]]></item>
 			<item id="bgcolor"><![CDATA[ centerbg.png no-repeat 50% 0]]></item>
 			<item id="sidebgcolor"><![CDATA[#FFF sidebg.gif repeat-y 100% 0]]></item>
 			<item id="headerborder"><![CDATA[0]]></item>
-			<item id="headerbordercolor"><![CDATA[]]>
-			</item>
+			<item id="headerbordercolor"><![CDATA[]]></item>
 			<item id="headertext"><![CDATA[#C00]]></item>
 			<item id="footertext"><![CDATA[#C00]]></item>
 			<item id="font"><![CDATA[Verdanna, Helvetica, Arial, sans-serif]]></item>
@@ -39,12 +35,10 @@
 			<item id="wrapwidth"><![CDATA[98%]]></item>
 			<item id="wrapbg"><![CDATA[#FFFDFB]]></item>
 			<item id="wrapborder"><![CDATA[0]]></item>
-			<item id="wrapbordercolor"><![CDATA[]]>
-			</item>
+			<item id="wrapbordercolor"><![CDATA[]]></item>
 			<item id="msgfontsize"><![CDATA[14px]]></item>
 			<item id="msgbigsize"><![CDATA[16px]]></item>
-			<item id="contentwidth"><![CDATA[]]>
-			</item>
+			<item id="contentwidth"><![CDATA[]]></item>
 			<item id="contentseparate"><![CDATA[#FFEAC1]]></item>
 			<item id="menuborder"><![CDATA[#FFEF3F]]></item>
 			<item id="menubgcolor"><![CDATA[#FFDB7B]]></item>

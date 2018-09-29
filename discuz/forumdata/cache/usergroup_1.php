@@ -1,7 +1,7 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 28, 2018, 18:35
-//Identify: 6b918f51757262a19dbbec2371c6c386
+//Created: Sep 29, 2018, 7:17
+//Identify: b19fe47b8aa749a475d996699578dcb1
 
 $groupid = '1';
 $radminid = '1';
@@ -116,5 +116,6 @@ $grouptype = 'system';
 $grouppublic = '';
 $groupcreditshigher = '0';
 $groupcreditslower = '0';
-$allowthreadplugin = '';
+$allowthreadplugin = array (
+);
 ?>

@@ -1,18 +1,11 @@
 <!--{if $secqaacheck}-->
-<input name="secanswer" id="secanswer" type="text" autocomplete="off"
-	style="width: 50px" value="{lang secqaa}" class="txt"
-	href="ajax.php?action=updatesecqaa" tabindex="1">
-<span id="checksecanswer"><img src="images/common/none.gif"
-	width="16" height="16"></span>
+	<input name="secanswer" id="secanswer" type="text" autocomplete="off" style="width:50px" value="{lang secqaa}" class="txt" href="ajax.php?action=updatesecqaa" tabindex="1">
+	<span id="checksecanswer"><img src="images/common/none.gif" width="16" height="16"></span>
 <!--{/if}-->
 <!--{if $seccodecheck}-->
-<input name="seccodeverify" id="seccodeverify_{CURSCRIPT}" type="text"
-	autocomplete="off" style="width: 50px" value="{lang seccode}"
-	class="txt" href="ajax.php?action=updateseccode" tabindex="1">
-<a href="javascript:;" onclick="updateseccode();doane(event);">{lang
-	seccode_change}</a>
-<span id="checkseccodeverify_{CURSCRIPT}"><img
-	src="images/common/none.gif" width="16" height="16"></span>
+	<input name="seccodeverify" id="seccodeverify_{CURSCRIPT}" type="text" autocomplete="off" style="width:50px" value="{lang seccode}" class="txt" href="ajax.php?action=updateseccode" tabindex="1">
+	<a href="javascript:;" onclick="updateseccode();doane(event);">{lang seccode_change}</a>
+	<span id="checkseccodeverify_{CURSCRIPT}"><img src="images/common/none.gif" width="16" height="16"></span>
 <!--{/if}-->
 
 <script type="text/javascript" reload="1">

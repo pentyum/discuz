@@ -6,7 +6,7 @@
  *
  * $Id: common.inc.php 21331 2010-01-06 06:42:22Z cnteacher $
  */
-// error_reporting(0);
+//error_reporting(0);
 $mtime = explode(' ', microtime());
 $discuz_starttime = $mtime[1] + $mtime[0];
 

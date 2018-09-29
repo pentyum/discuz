@@ -1,4 +1,5 @@
 <?php
+
 $xmllang = "
 <okbtn>确定</okbtn>
 <ctnbtn>继续</ctnbtn>

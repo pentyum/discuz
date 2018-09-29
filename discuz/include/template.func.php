@@ -34,14 +34,16 @@ function parse_template($tplfile, $templateid, $tpldir)
     $headerexists = preg_match("/{(sub)?template\s+header\}/", $template) || $basefile == 'header_ajax';
     $subtemplates = array();
 
-    function get_stripvtemplate($match)
+    function get_stripvtemplate_sub($match)
     {
         return stripvtemplate($match[1], 1);
     }
-
+    function get_stripvtemplate($match){
+        return stripvtemplate($match[1], 0);
+    }
     function get_loadcsstemplate($match)
     {
-        return loadcsstemplate($match[1]);
+        return loadcsstemplate();
     }
 
     function get_languagevar($match)
@@ -53,13 +55,43 @@ function parse_template($tplfile, $templateid, $tpldir)
     {
         return faqvar($match[1]);
     }
+    function get_addquote($match)
+    {
+        return addquote('<?='.$match[1].'?>');
+    }
+    function get_stripvtags($match){
+        return stripvtags('<? '.$match[1].' ?>','');
+    }
+    function get_stripvtags_echo($match){
+        return stripvtags('<? echo '.$match[1].'; ?>','');
+    }
+    function get_stripvtags_elseif($match){
+        return stripvtags($match[1].'<? } elseif('.$match[2].') { ?>'.$match[3],'');
+    }
+    function get_stripvtags_if($match){
+        return stripvtags($match[1].'<? if('.$match[2].') { ?>'.$match[3],$match[4].$match[5].'<? } ?>'.$match[6]);
+    }
+    function get_stripvtags_loop_3($match){
+        return stripvtags('<? if(is_array('.$match[1].')) { foreach('.$match[1].' as '.$match[2].') { ?>',$match[3].'<? } } ?>');
+    }
+    function get_stripvtags_loop_4($match){
+        return stripvtags('<? if(is_array('.$match[1].')) { foreach('.$match[1].' as '.$match[2].' => '.$match[3].') { ?>',$match[4].'<? } } ?>');
+    }
+    function get_stripscriptamp($match){
+        return stripscriptamp($match[1], $match[2]);
+    }
+    function get_stripblock($match){
+        return stripblock($match[1], $match[2]);
+    }
+    function get_transamp($match){
+        return transamp($match[0]);
+    }
     for ($i = 1; $i <= 3; $i ++) {
         if (strexists($template, '{subtemplate')) {
-            $template = preg_replace_callback("/[\n\r\t]*\{subtemplate\s+([a-z0-9_:]+)\}[\n\r\t]*/is", "get_stripvtemplate", $template);
+            $template = preg_replace_callback("/[\n\r\t]*\{subtemplate\s+([a-z0-9_:]+)\}[\n\r\t]*/is", "get_stripvtemplate_sub", $template);
         }
     }
     
-    $template = preg_replace_callback("/[\n\r\t]*\{csstemplate\}[\n\r\t]*/is", "get_loadcsstemplate", $template);
     $template = preg_replace("/([\n\r]+)\t+/s", "\\1", $template);
     $template = preg_replace("/\<\!\-\-\{(.+?)\}\-\-\>/s", "{\\1}", $template);
     $template = preg_replace_callback("/\{lang\s+(.+?)\}/is", "get_languagevar", $template);
@@ -67,8 +99,8 @@ function parse_template($tplfile, $templateid, $tpldir)
     $template = str_replace("{LF}", "<?=\"\\n\"?>", $template);
     
     $template = preg_replace("/\{(\\\$[a-zA-Z0-9_\[\]\'\"\$\.\x7f-\xff]+)\}/s", "<?=\\1?>", $template);
-    $template = preg_replace("/$var_regexp/es", "addquote('<?=\\1?>')", $template);
-    $template = preg_replace("/\<\?\=\<\?\=$var_regexp\?\>\?\>/es", "addquote('<?=\\1?>')", $template);
+    $template = preg_replace_callback("/$var_regexp/s", "get_addquote", $template);
+    $template = preg_replace_callback("/\<\?\=\<\?\=$var_regexp\?\>\?\>/s", "get_addquote", $template);
     
     $headeradd = $headerexists ? "hookscriptoutput('$basefile');" : '';
     if (! empty($subtemplates)) {
@@ -81,17 +113,18 @@ function parse_template($tplfile, $templateid, $tpldir)
     
     $template = "<? if(!defined('IN_DISCUZ')) exit('Access Denied'); {$headeradd}?>\n$template";
     
-    $template = preg_replace("/[\n\r\t]*\{template\s+([a-z0-9_:]+)\}[\n\r\t]*/ies", "stripvtemplate('\\1', 0)", $template);
-    $template = preg_replace("/[\n\r\t]*\{template\s+(.+?)\}[\n\r\t]*/ies", "stripvtemplate('\\1', 0)", $template);
-    $template = preg_replace("/[\n\r\t]*\{eval\s+(.+?)\}[\n\r\t]*/ies", "stripvtags('<? \\1 ?>','')", $template);
-    $template = preg_replace("/[\n\r\t]*\{echo\s+(.+?)\}[\n\r\t]*/ies", "stripvtags('<? echo \\1; ?>','')", $template);
-    $template = preg_replace("/([\n\r\t]*)\{elseif\s+(.+?)\}([\n\r\t]*)/ies", "stripvtags('\\1<? } elseif(\\2) { ?>\\3','')", $template);
+    $template = preg_replace_callback("/[\n\r\t]*\{template\s+([a-z0-9_:]+)\}[\n\r\t]*/is", "get_stripvtemplate", $template);
+    $template = preg_replace_callback("/[\n\r\t]*\{template\s+(.+?)\}[\n\r\t]*/is", "get_stripvtemplate", $template);
+    $template = preg_replace_callback("/[\n\r\t]*\{eval\s+(.+?)\}[\n\r\t]*/is", "get_stripvtags", $template);
+    $template = preg_replace_callback("/[\n\r\t]*\{csstemplate\}[\n\r\t]*/is", "get_loadcsstemplate", $template);
+    $template = preg_replace_callback("/[\n\r\t]*\{echo\s+(.+?)\}[\n\r\t]*/is", "get_stripvtags_echo", $template);
+    $template = preg_replace_callback("/([\n\r\t]*)\{elseif\s+(.+?)\}([\n\r\t]*)/is", "get_stripvtags_elseif", $template);
     $template = preg_replace("/([\n\r\t]*)\{else\}([\n\r\t]*)/is", "\\1<? } else { ?>\\2", $template);
     
     for ($i = 0; $i < $nest; $i ++) {
-        $template = preg_replace("/[\n\r\t]*\{loop\s+(\S+)\s+(\S+)\}[\n\r]*(.+?)[\n\r]*\{\/loop\}[\n\r\t]*/ies", "stripvtags('<? if(is_array(\\1)) { foreach(\\1 as \\2) { ?>','\\3<? } } ?>')", $template);
-        $template = preg_replace("/[\n\r\t]*\{loop\s+(\S+)\s+(\S+)\s+(\S+)\}[\n\r\t]*(.+?)[\n\r\t]*\{\/loop\}[\n\r\t]*/ies", "stripvtags('<? if(is_array(\\1)) { foreach(\\1 as \\2 => \\3) { ?>','\\4<? } } ?>')", $template);
-        $template = preg_replace("/([\n\r\t]*)\{if\s+(.+?)\}([\n\r]*)(.+?)([\n\r]*)\{\/if\}([\n\r\t]*)/ies", "stripvtags('\\1<? if(\\2) { ?>\\3','\\4\\5<? } ?>\\6')", $template);
+        $template = preg_replace_callback("/[\n\r\t]*\{loop\s+(\S+)\s+(\S+)\}[\n\r]*(.+?)[\n\r]*\{\/loop\}[\n\r\t]*/is", "get_stripvtags_loop_3", $template);
+        $template = preg_replace_callback("/[\n\r\t]*\{loop\s+(\S+)\s+(\S+)\s+(\S+)\}[\n\r\t]*(.+?)[\n\r\t]*\{\/loop\}[\n\r\t]*/is", "get_stripvtags_loop_4", $template);
+        $template = preg_replace_callback("/([\n\r\t]*)\{if\s+(.+?)\}([\n\r]*)(.+?)([\n\r]*)\{\/if\}([\n\r\t]*)/is", "get_stripvtags_if", $template);
     }
     
     $template = preg_replace("/\{$const_regexp\}/s", "<?=\\1?>", $template);
@@ -101,10 +134,10 @@ function parse_template($tplfile, $templateid, $tpldir)
         dexit("Directory './forumdata/templates/' not found or have no access!");
     }
     
-    $template = preg_replace("/\"(http)?[\w\.\/:]+\?[^\"]+?&[^\"]+?\"/e", "transamp('\\0')", $template);
-    $template = preg_replace("/\<script[^\>]*?src=\"(.+?)\"(.*?)\>\s*\<\/script\>/ise", "stripscriptamp('\\1', '\\2')", $template);
+    $template = preg_replace_callback("/\"(http)?[\w\.\/:]+\?[^\"]+?&[^\"]+?\"/", "get_transamp", $template);
+    $template = preg_replace_callback("/\<script[^\>]*?src=\"(.+?)\"(.*?)\>\s*\<\/script\>/is", "get_stripscriptamp", $template);
     
-    $template = preg_replace("/[\n\r\t]*\{block\s+([a-zA-Z0-9_]+)\}(.+?)\{\/block\}/ies", "stripblock('\\1', '\\2')", $template);
+    $template = preg_replace_callback("/[\n\r\t]*\{block\s+([a-zA-Z0-9_]+)\}(.+?)\{\/block\}/is", "get_stripblock", $template);
     
     flock($fp, 2);
     fwrite($fp, $template);
@@ -142,13 +175,16 @@ function loadsubtemplate($file, $templateid = 0, $tpldir = '')
     return $content;
 }
 
+function get_cssvtags($match){
+    return cssvtags($match[2],$match[4]);
+}
 function loadcsstemplate()
 {
     global $csscurscripts;
     $scriptcss = '<link rel="stylesheet" type="text/css" href="forumdata/cache/style_{STYLEID}_common.css?{VERHASH}" />';
     $content = $csscurscripts = '';
     $content = @implode('', file(DISCUZ_ROOT . './forumdata/cache/style_' . STYLEID . '_script.css'));
-    $content = preg_replace("/([\n\r\t]*)\[CURSCRIPT\s+=\s+(.+?)\]([\n\r]*)(.*?)([\n\r]*)\[\/CURSCRIPT\]([\n\r\t]*)/ies", "cssvtags('\\2','\\4')", $content);
+    $content = preg_replace_callback("/([\n\r\t]*)\[CURSCRIPT\s+=\s+(.+?)\]([\n\r]*)(.*?)([\n\r]*)\[\/CURSCRIPT\]([\n\r\t]*)/is", "get_cssvtags", $content);
     if ($csscurscripts) {
         $csscurscripts = preg_replace(array(
             '/\s*([,;:\{\}])\s*/',

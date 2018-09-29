@@ -125,41 +125,38 @@ function html2bbcode($text)
         "/<script.*>.*<\/script>/siU",
         '/on(mousewheel|mouseover|click|load|onload|submit|focus|blur)="[^"]*"/i',
         "/(\r\n|\n|\r)/",
-        "/<table([^>]*(width|background|background-color|bgcolor)[^>]*)>/siUe",
         "/<table.*>/siU",
         "/<tr.*>/siU",
         "/<td>/i",
-        "/<td(.+)>/siUe",
         "/<\/td>/i",
         "/<\/tr>/i",
         "/<\/table>/i",
-        '/<h([0-9]+)[^>]*>(.*)<\/h\\1>/siU',
-        "/<img[^>]+smilieid=\"(\d+)\".*>/esiU",
-        "/<img([^>]*src[^>]*)>/eiU",
+        '/<\/h([0-9]+)>/siU',
         "/<a\s+?name=.+?\".\">(.+?)<\/a>/is",
         "/<br.*>/siU",
-        "/<span\s+?style=\"float:\s+(left|right);\">(.+?)<\/span>/is"
+        "/<span\s+?style=\"float:\s+(left|right);\">(.+?)<\/span>/is",
     );
     $pregreplace = array(
         '',
         '',
         '',
-        "tabletag('\\1')",
         '[table]',
         '[tr]',
         '[td]',
-        "tdtag('\\1')",
         '[/td]',
         '[/tr]',
         '[/table]',
-        "[size=\\1]\\2[/size]\n\n",
-        "smileycode('\\1')",
-        "imgtag('\\1')",
+        "[/size]\n\n",
         '\1',
         "\n",
-        "[float=\\1]\\2[/float]"
+        "[float=\\1]\\2[/float]",
     );
     $text = preg_replace($pregfind, $pregreplace, $text);
+    $text = preg_replace_callback("/<table([^>]*(width|background|background-color|bgcolor)[^>]*)>/siU", 'html2bbcode_callback_tabletag_1', $text);
+    $text = preg_replace_callback("/<td(.+)>/siU", 'html2bbcode_callback_tdtag_1', $text);
+    $text = preg_replace_callback('/<h([0-9]+)[^>]*>/siU', 'html2bbcode_callback_1', $text);
+    $text = preg_replace_callback("/<img[^>]+smilieid=\"(\d+)\".*>/siU", 'html2bbcode_callback_smileycode_1', $text);
+    $text = preg_replace_callback("/<img([^>]*src[^>]*)>/iU", 'html2bbcode_callback_imgtag_1', $text);
     
     $text = recursion('b', $text, 'simpletag', 'b');
     $text = recursion('strong', $text, 'simpletag', 'b');
@@ -212,6 +209,26 @@ function html2bbcode($text)
     $text = str_replace($strfind, $strreplace, $text);
     
     return trim($text);
+}
+
+function html2bbcode_callback_tabletag_1($matches) {
+    return tabletag($matches[1]);
+}
+
+function html2bbcode_callback_tdtag_1($matches) {
+    return tdtag($matches[1]);
+}
+
+function html2bbcode_callback_1($matches) {
+    return '[size='.(7 - $matches[1]).']';
+}
+
+function html2bbcode_callback_smileycode_1($matches) {
+    return smileycode($matches[1]);
+}
+
+function html2bbcode_callback_imgtag_1($matches) {
+    return imgtag($matches[1]);
 }
 
 function imgtag($attributes)

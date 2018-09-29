@@ -6,19 +6,18 @@
 
 <div id="wrap" class="wrap s_clear">
 	<div class="main">
-		<div class="content">
+	<div class="content">
 
-			<script language="javascript">
+		<script language="javascript">
 			if(top != self) {
 				top.location.href = location.href;
 			}
 		</script>
 
-			{subtemplate manyou_appnav}
+		{subtemplate manyou_appnav}
 
-			<script type="text/javascript"
-				src="http://static.manyou.com/scripts/my_iframe.js"></script>
-			<script language="javascript">
+		<script type="text/javascript" src="http://static.manyou.com/scripts/my_iframe.js"></script>
+		<script language="javascript">
 		var prefixURL = "$my_prefix";
 		var suffixURL = "$my_suffix";
 		var queryString = '';
@@ -40,24 +39,17 @@
 		}
 
 		</script>
-			<iframe id="ifm0" frameborder="0" width="810" scrolling="no"
-				height="810"
-				style="position: absolute; top: -5000px; left: -5000px;"
-				src="{$url}"></iframe>
+		<iframe id="ifm0" frameborder="0" width="810" scrolling="no" height="810" style="position:absolute; top:-5000px; left:-5000px;" src="{$url}"></iframe>
 
 
-			<div id="mx2note"
-				style="display: none; padding: 150px 0 150px 0; margin: 1px; text-align: center; background-color: #FFFFBF; font-size: 12px; line-height: 14px; color: #DB0000; letter-spacing: 1px;">
-				{lang manyou:notice_browser}</div>
-			<div id="loading"
-				style="display: block; padding: 100px 0 100px 0; text-align: center; color: #999999; font-size: 12px;">
-				<img src="manyou/images/loading.gif"
-					style="position: relative; top: 11px;" /> {lang manyou:loading}
-			</div>
-
+		<div id="mx2note" style="display:none; padding:150px 0 150px 0; margin:1px; text-align:center; background-color:#FFFFBF;  font-size:12px; line-height:14px; color:#DB0000; letter-spacing:1px;">
+			{lang manyou:notice_browser}
 		</div>
-	</div>
-</div>
+		<div id="loading" style="display:block; padding:100px 0 100px 0;text-align:center;color:#999999;font-size:12px;">
+			<img src="manyou/images/loading.gif" style="position:relative;top:11px;"/>  {lang manyou:loading}
+		</div>
+
+	</div></div></div>
 
 </div>
 

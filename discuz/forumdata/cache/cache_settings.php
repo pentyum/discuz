@@ -1,7 +1,7 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 28, 2018, 19:04
-//Identify: 70c1c4304feb8fbdba340037ff8ec98d
+//Created: Sep 29, 2018, 7:17
+//Identify: 8103b435b5db9fd1aa8740a130d3a0cd
 
 $_DCACHE['settings'] = array (
   'accessemail' => '',
@@ -14,7 +14,7 @@ $_DCACHE['settings'] = array (
   'admode' => '1',
   'archiverstatus' => '1',
   'attachbanperiods' => '',
-  'attachdir' => '/home/yaoyao/website/wwwroot/discuz/./attachments',
+  'attachdir' => '/home/yaoyao/git/discuz/discuz/./attachments',
   'attachexpire' => '',
   'attachimgpost' => '1',
   'attachrefcheck' => '0',
@@ -290,7 +290,7 @@ $_DCACHE['settings'] = array (
   'nocacheheaders' => '0',
   'oltimespan' => '10',
   'onlinehold' => 900,
-  'onlinerecord' => '1	1040034649',
+  'onlinerecord' => '2	1538200787',
   'outextcredits' => 
   array (
     '|' => 
@@ -336,7 +336,6 @@ $_DCACHE['settings'] = array (
   'rewritestatus' => '0',
   'rssstatus' => '1',
   'rssttl' => '60',
-  'runwizard' => '1',
   'searchbanperiods' => '',
   'searchctrl' => '30',
   'seccodedata' => 
@@ -480,7 +479,7 @@ $_DCACHE['settings'] = array (
   'totalmembers' => '1',
   'lastmember' => 'admin',
   'cachethreadon' => 0,
-  'cronnextrun' => '1538126244',
+  'cronnextrun' => '1538236800',
   'styles' => 
   array (
     1 => '默认风格',

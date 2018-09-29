@@ -1,21 +1,15 @@
 {subtemplate header}
-<div id="nav">
-	<a id="fjump" href="$indexname" {if $forumjump== 1} class="dropmenu"
-		onmouseover="showMenu({'ctrlid':this.id})"{/if}>$bbname</a>
-	$navigation
-</div>
+<div id="nav"><a id="fjump" href="$indexname"{if $forumjump == 1} class="dropmenu" onmouseover="showMenu({'ctrlid':this.id})"{/if}>$bbname</a> $navigation</div>
 
 <!--{if $admode && !empty($advlist['text'])}-->
-<div id="ad_text" class="ad_text">
-	<table summary="Text Ad" cellpadding="0" cellspacing="0">$advlist[text]
-	</table>
+<div id="ad_text" class="ad_text" >
+	<table summary="Text Ad" cellpadding="0" cellspacing="0">$advlist[text]</table>
 </div>
 <!--{else}-->
 <div id="ad_text"></div>
 <!--{/if}-->
 
-<div id="wrap" {if $infosidestatus['allow']
-	< 2} class="wrap s_clear"{else} class="wrap with_side s_clear"{/if}>
+<div id="wrap"{if $infosidestatus['allow'] < 2} class="wrap s_clear"{else} class="wrap with_side s_clear"{/if}>
 	<!--{if $infosidestatus[allow] == 2}-->
 		<a id="sidebar_img" href="javascript:;" onclick="sidebar_collapse(['{lang sidebar_collapsed_yes}', '{lang sidebar_collapsed_no}']);" class="$collapseimg[sidebar]"><!--{if $collapseimg[sidebar] == 'collapsed_yes'}-->{lang sidebar_collapsed_yes}<!--{else}-->{lang sidebar_collapsed_no}<!--{/if}--></a>
 	<!--{elseif $infosidestatus[allow] == 1}-->
@@ -84,8 +78,9 @@
 </div>
 
 <!--{if $forumjump}-->
-<div class="popupmenu_popup" id="fjump_menu" style="display: none">
-	$forummenu</div>
+	<div class="popupmenu_popup" id="fjump_menu" style="display: none">
+	$forummenu
+	</div>
 <!--{/if}-->
 
 {subtemplate footer}
