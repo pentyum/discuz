@@ -149,11 +149,11 @@
 			<table summary="forum_$fid" {if !$separatepos}id="forum_$fid"{/if} cellspacing="0" cellpadding="0" class="datatable">
 				<thead class="colplural">
 					<tr>
-						<td colspan="2">&nbsp;<a href="javascript:;" id="filtertype" class="dropmenu" onclick="showMenu({'ctrlid':this.id});"><!--{if $filter == poll}-->{lang thread_poll}
-							<!--{elseif $filter == trade}-->{lang thread_trade}
-							<!--{elseif $filter == activity}-->{lang thread_activity}
-							<!--{elseif $filter == debate}-->{lang thread_debate}
-							<!--{elseif $filter == reward}-->{lang thread_reward}
+						<td colspan="2">&nbsp;<a href="javascript:;" id="filtertype" class="dropmenu" onclick="showMenu({'ctrlid':this.id});"><!--{if $filter == 'poll'}-->{lang thread_poll}
+							<!--{elseif $filter == 'trade'}-->{lang thread_trade}
+							<!--{elseif $filter == 'activity'}-->{lang thread_activity}
+							<!--{elseif $filter == 'debate'}-->{lang thread_debate}
+							<!--{elseif $filter == 'reward'}-->{lang thread_reward}
 							<!--{else}-->{lang type}<!--{/if}--></a></td>
 						<!--{if $forum['ismoderator']}--><td class="icon">&nbsp;</td><!--{/if}-->
 						<th>

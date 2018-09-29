@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 29, 2018, 7:17
+//Created: Sep 29, 2018, 12:14
 //Identify: 5b3f9578007209271804dc324801ae4b
 
 $admingid = '17';

@@ -1,9 +1,9 @@
 <? if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('forumdisplay');
 0
-|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/header.htm', 1538205461, '1', './templates/default')
-|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/recommend.htm', 1538205461, '1', './templates/default')
-|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/footer.htm', 1538205461, '1', './templates/default')
-|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/jsmenu.htm', 1538205461, '1', './templates/default')
+|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/header.htm', 1538223333, '1', './templates/default')
+|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/recommend.htm', 1538223333, '1', './templates/default')
+|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/footer.htm', 1538223333, '1', './templates/default')
+|| checktplrefresh('/home/yaoyao/git/discuz/discuz/././templates/default/forumdisplay.htm', '/home/yaoyao/git/discuz/discuz/././templates/default/jsmenu.htm', 1538223333, '1', './templates/default')
 ;?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -23,7 +23,7 @@
 <?=$rsshead?>
 <?=$extrahead?><link rel="stylesheet" type="text/css" href="forumdata/cache/style_<?=STYLEID?>_common.css?<?=VERHASH?>" /><link rel="stylesheet" type="text/css" href="forumdata/cache/scriptstyle_<?=STYLEID?>_<?=CURSCRIPT?>.css?<?=VERHASH?>" />
 <!--<? if($forum['ismoderator']) { ?>-->
-	<link href="forumdata/cache/style_1_moderator.css?dDq" rel="stylesheet" type="text/css" />
+	<link href="forumdata/cache/style_1_moderator.css?96q" rel="stylesheet" type="text/css" />
 <!--<? } ?>--><script type="text/javascript">var STYLEID = '<?=STYLEID?>', IMGDIR = '<?=IMGDIR?>', VERHASH = '<?=VERHASH?>', charset = '<?=$charset?>', discuz_uid = <?=$discuz_uid?>, cookiedomain = '<?=$cookiedomain?>', cookiepath = '<?=$cookiepath?>', attackevasive = '<?=$attackevasive?>', disallowfloat = '<?=$disallowfloat?>', creditnotice = '<? if($creditnotice) { ?><?=$creditnames?><? } ?>', <? if(in_array(CURSCRIPT, array('viewthread', 'forumdisplay'))) { ?>gid = parseInt('<?=$thisgid?>')<? } elseif(CURSCRIPT == 'index') { ?>gid = parseInt('<?=$gid?>')<? } else { ?>gid = 0<? } ?>, fid = parseInt('<?=$fid?>'), tid = parseInt('<?=$tid?>')</script>
 <script src="<?=$jspath?>common.js?<?=VERHASH?>" type="text/javascript"></script>
 </head>
@@ -251,11 +251,11 @@ slideImgTexts[<? echo $k+1; ?>] = "<?=$imginfo['subject']?>";<? } } ?></script>
 <table summary="forum_<?=$fid?>" <? if(!$separatepos) { ?>id="forum_<?=$fid?>"<? } ?> cellspacing="0" cellpadding="0" class="datatable">
 <thead class="colplural">
 <tr>
-<td colspan="2">&nbsp;<a href="javascript:;" id="filtertype" class="dropmenu" onclick="showMenu({'ctrlid':this.id});"><? if($filter == poll) { ?>投票
-<? } elseif($filter == trade) { ?>商品
-<? } elseif($filter == activity) { ?>活动
-<? } elseif($filter == debate) { ?>辩论
-<? } elseif($filter == reward) { ?>悬赏
+<td colspan="2">&nbsp;<a href="javascript:;" id="filtertype" class="dropmenu" onclick="showMenu({'ctrlid':this.id});"><? if($filter == 'poll') { ?>投票
+<? } elseif($filter == 'trade') { ?>商品
+<? } elseif($filter == 'activity') { ?>活动
+<? } elseif($filter == 'debate') { ?>辩论
+<? } elseif($filter == 'reward') { ?>悬赏
 <? } else { ?>类型<? } ?></a></td>
 <? if($forum['ismoderator']) { ?><td class="icon">&nbsp;</td><? } ?>
 <th>

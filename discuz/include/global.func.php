@@ -1928,7 +1928,7 @@ function transval($template, $data)
 
 function stat_code($scriptpath = '', $imgcode = 0)
 {
-    if (! defined('STAT_DISABLED') && STAT_ID > 0 && ! IS_ROBOT) {
+    if (! defined('STAT_DISABLED') && defined('STAT_ID') && STAT_ID > 0 && ! IS_ROBOT) {
         $statserver = 'http://stat.discuz.com/';
         if (! defined('CACHE_FILE') || $GLOBALS['discuz_uid']) {
             $url = $statserver . 'stat.php?q=' . rawurlencode(base64_encode(stat_query('', '', '', $scriptpath)));

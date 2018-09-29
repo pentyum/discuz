@@ -39,7 +39,8 @@ if ($action == 'reply') {
     $addfeedcheck = $customaddfeed & 1 ? 'checked="checked"' : '';
 }
 
-$navigation = $navtitle = $thread = '';
+$thread=array();
+$navigation = $navtitle = '';
 if (! empty($cedit)) {
     unset($inajax, $infloat, $ajaxtarget, $handlekey);
 }
@@ -202,6 +203,7 @@ $allowpostreward = $allowpost && $allowpostreward && ($forum['allowpostspecial']
 $allowpostactivity = $allowpost && $allowpostactivity && ($forum['allowpostspecial'] & 8);
 $allowpostdebate = $allowpost && $allowpostdebate && ($forum['allowpostspecial'] & 16);
 $usesigcheck = $discuz_uid && $sigstatus ? 'checked="checked"' : '';
+
 $ordertypecheck = getstatus($thread['status'], 4) ? 'checked="checked"' : '';
 
 if ($specialextra && $allowpost && $threadplugins && (! array_key_exists($specialextra, $threadplugins) || ! @in_array($specialextra, unserialize($forum['threadplugin'])) || ! @in_array($specialextra, $allowthreadplugin))) {
