@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 30, 2018, 3:57
+//Created: Sep 30, 2018, 7:13
 //Identify: e09874091dd643812f757762bc5049d6
 
 $_DCACHE['custominfo'] = array (

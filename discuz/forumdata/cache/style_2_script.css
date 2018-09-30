@@ -1,6 +1,6 @@
 [SCRIPTCSS]
 <!--{if $forum['ismoderator']}-->
-	<link href="forumdata/cache/style_2_moderator.css?q2p" rel="stylesheet" type="text/css" />
+	<link href="forumdata/cache/style_2_moderator.css?Cjr" rel="stylesheet" type="text/css" />
 <!--{/if}-->
 
 [CURSCRIPT = index]

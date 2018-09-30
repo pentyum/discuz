@@ -194,6 +194,8 @@ if ($sid) {
 			WHERE m.uid=s.uid AND s.sid='$sid' AND CONCAT_WS('.',s.ip1,s.ip2,s.ip3,s.ip4)='$onlineip' AND m.uid='$discuz_uid'
 			AND m.password='$discuz_pw' AND m.secques='$discuz_secques'");
     } else {
+        $q = "SELECT sid, uid AS sessionuid, groupid, groupid='6' AS ipbanned, pageviews AS spageviews, styleid, lastolupdate, seccode
+			FROM {$tablepre}sessions WHERE sid='$sid' AND CONCAT_WS('.',ip1,ip2,ip3,ip4)='$onlineip'";
         $query = $db->query("SELECT sid, uid AS sessionuid, groupid, groupid='6' AS ipbanned, pageviews AS spageviews, styleid, lastolupdate, seccode
 			FROM {$tablepre}sessions WHERE sid='$sid' AND CONCAT_WS('.',ip1,ip2,ip3,ip4)='$onlineip'");
     }
@@ -388,9 +390,7 @@ if (! empty($tid) || ! empty($fid)) {
 }
 
 $styleid = intval(! empty($_GET['styleid']) ? $_GET['styleid'] : (! empty($_POST['styleid']) ? $_POST['styleid'] : (! empty($_DSESSION['styleid']) ? $_DSESSION['styleid'] : $_DCACHE['settings']['styleid'])));
-
 $styleid = intval(isset($styles[$styleid]) ? $styleid : $_DCACHE['settings']['styleid']);
-
 if (@! include DISCUZ_ROOT . './forumdata/cache/style_' . intval(! empty($forum['styleid']) ? $forum['styleid'] : $styleid) . '.php') {
     $cachelost .= (@include DISCUZ_ROOT . './forumdata/cache/style_' . ($styleid = $_DCACHE['settings']['styleid']) . '.php') ? '' : ' style_' . $styleid;
 }

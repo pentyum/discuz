@@ -1,7 +1,7 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 30, 2018, 3:57
-//Identify: fb714eef463c775e84f236fde0cf33da
+//Created: Sep 30, 2018, 16:14
+//Identify: 6f04f2c6c05ad9f5dc64f181c682cb96
 
 $_DCACHE['settings'] = array (
   'accessemail' => '',
@@ -290,7 +290,7 @@ $_DCACHE['settings'] = array (
   'nocacheheaders' => '0',
   'oltimespan' => '10',
   'onlinehold' => 900,
-  'onlinerecord' => '2	1538200787',
+  'onlinerecord' => '8	1538295043',
   'outextcredits' => 
   array (
     '|' => 
@@ -430,10 +430,7 @@ $_DCACHE['settings'] = array (
   ),
   'transfermincredits' => '1000',
   'transsidstatus' => '0',
-  'uc' => 
-  array (
-    'addfeed' => 1,
-  ),
+  'uc' => false,
   'ucactivation' => '1',
   'upgradeurl' => 'http://localhost/develop/dzhead/develop/upgrade.php',
   'userdateformat' => 

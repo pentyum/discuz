@@ -141,7 +141,23 @@
 			<!--{/if}-->
 		</div>
 		<!--{/if}-->
-
+		<div>
+			<ul class="itemfilter s_clear">
+				<li>{lang thread}:</li>
+				<li{if !$filter} class="current"{/if}><a href="forumdisplay.php?fid=$fid"><span>{lang all}</span></a></li>
+				<li{if $filter == 'digest'} class="current"{/if}><a class="filter" href="forumdisplay.php?fid=$fid&amp;filter=digest"><span>{lang digestposts}</span></a></li>
+				<!--{if $recommendthread[status]}--><li{if $filter == 'recommend'} class="current"{/if}><a class="filter" href="forumdisplay.php?fid={$fid}&filter=recommend&orderby=recommends"><span>{lang order_recommends}</span></a></li><!--{/if}-->
+				<li class="pipe">|</li>
+				<li>{lang dateline_range}:</li>
+				<li{if $filter == 86400} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=86400$typeadd$sortadd"><span>{lang last_1_days}</span></a></li>
+				<li{if $filter == 172800} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=172800$typeadd$sortadd"><span>{lang last_2_days}</span></a></li>
+				<li{if $filter == 604800} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=604800$typeadd$sortadd"><span>{lang last_7_days}</span></a></li>
+				<li{if $filter == 2592000} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=2592000$typeadd$sortadd"><span>{lang last_30_days}</span></a></li>
+				<li{if $filter == 7948800} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=7948800$typeadd$sortadd"><span>{lang last_90_days}</span></a></li>
+				<li class="pipe">|</li>
+				<li><a class="order {if $orderby == 'heats' || $orderby == 'recommends'}order_active{/if}" href="forumdisplay.php?fid={$fid}&filter=$filter&orderby={if $filter == 'recommend'}recommends{else}heats{/if}$typeadd$sortadd">{lang order_heats}</a></li>
+			</ul>
+		</div>
 		<div id="threadlist" class="threadlist datalist" style="position: relative;">
 		<form method="post" name="moderate" id="moderate" action="topicadmin.php?action=moderate&fid=$fid&infloat=yes&nopost=yes">
 			<input type="hidden" name="formhash" value="{FORMHASH}" />
@@ -155,24 +171,6 @@
 							<!--{elseif $filter == 'debate'}-->{lang thread_debate}
 							<!--{elseif $filter == 'reward'}-->{lang thread_reward}
 							<!--{else}-->{lang type}<!--{/if}--></a></td>
-						<!--{if $forum['ismoderator']}--><td class="icon">&nbsp;</td><!--{/if}-->
-						<th>
-							<ul class="itemfilter s_clear">
-								<li>{lang thread}:</li>
-								<li{if !$filter} class="current"{/if}><a href="forumdisplay.php?fid=$fid"><span>{lang all}</span></a></li>
-								<li{if $filter == 'digest'} class="current"{/if}><a class="filter" href="forumdisplay.php?fid=$fid&amp;filter=digest"><span>{lang digestposts}</span></a></li>
-								<!--{if $recommendthread[status]}--><li{if $filter == 'recommend'} class="current"{/if}><a class="filter" href="forumdisplay.php?fid={$fid}&filter=recommend&orderby=recommends"><span>{lang order_recommends}</span></a></li><!--{/if}-->
-								<li class="pipe">|</li>
-								<li>{lang dateline_range}:</li>
-								<li{if $filter == 86400} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=86400$typeadd$sortadd"><span>{lang last_1_days}</span></a></li>
-								<li{if $filter == 172800} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=172800$typeadd$sortadd"><span>{lang last_2_days}</span></a></li>
-								<li{if $filter == 604800} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=604800$typeadd$sortadd"><span>{lang last_7_days}</span></a></li>
-								<li{if $filter == 2592000} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=2592000$typeadd$sortadd"><span>{lang last_30_days}</span></a></li>
-								<li{if $filter == 7948800} class="current"{/if}><a href="forumdisplay.php?fid=$fid&orderby=$orderby&filter=7948800$typeadd$sortadd"><span>{lang last_90_days}</span></a></li>
-								<li class="pipe">|</li>
-								<li><a class="order {if $orderby == 'heats' || $orderby == 'recommends'}order_active{/if}" href="forumdisplay.php?fid={$fid}&filter=$filter&orderby={if $filter == 'recommend'}recommends{else}heats{/if}$typeadd$sortadd">{lang order_heats}</a></li>
-							</ul>
-						</th>
 						<td class="author"><a href="forumdisplay.php?fid={$fid}&filter=$filter&orderby=dateline$typeadd$sortadd" class="order {if $orderby == 'dateline'}order_active{/if}">{lang author}/{lang time}</a></td>
 						<td class="nums"><a href="forumdisplay.php?fid={$fid}&filter=$filter&orderby=replies$typeadd$sortadd" class="order {if $orderby == 'replies'}order_active{/if}">{lang replies}</a>&nbsp;<a href="forumdisplay.php?fid={$fid}&filter=$filter&orderby=views$typeadd$sortadd" class="order {if $orderby == 'views'}order_active{/if}">{lang views}</a></td>
 						<td class="lastpost"><cite><a href="forumdisplay.php?fid={$fid}&filter=$filter&orderby=lastpost$typeadd$sortadd" class="order {if $orderby == 'lastpost'}order_active{/if}">{lang lastpost}</a></cite></td>
@@ -182,16 +180,18 @@
 				<!--{if $page == 1 && !empty($announcement)}-->
 				<tbody>
 					<tr>
-						<td class="folder"><img src="{IMGDIR}/ann_icon.gif" alt="{lang announcement}" /></td>
-						<td class="icon">&nbsp;</td>
-						<!--{if $forum['ismoderator']}--><td class="icon">&nbsp;</td><!--{/if}-->
-						<th class="subject"><strong>{lang announcement}: <!--{if empty($announcement['type'])}--><a href="announcement.php?id=$announcement[id]#$announcement[id]" target="_blank">$announcement[subject]</a><!--{else}--><a href="$announcement[message]" target="_blank">$announcement[subject]</a><!--{/if}--></strong></th>
-						<td class="author">
+						<td class="icon"><!--{if $forum['ismoderator']}-->&nbsp;<!--{/if}--></td>
+						<td class="author" colspan="2">
 							<cite><a href="space.php?uid=$announcement[authorid]">$announcement[author]</a></cite>
 							<em>$announcement[starttime]</em>
 						</td>
 						<td class="nums">&nbsp;</td>
 						<td class="lastpost">&nbsp;</td>
+					</tr>
+					<tr>
+						<td class="folder"><img src="{IMGDIR}/ann_icon.gif" alt="{lang announcement}" /></td>
+						<td class="icon">&nbsp;</td>
+						<th colspan="3" class="subject"><strong>{lang announcement}: <!--{if empty($announcement['type'])}--><a href="announcement.php?id=$announcement[id]#$announcement[id]" target="_blank">$announcement[subject]</a><!--{else}--><a href="$announcement[message]" target="_blank">$announcement[subject]</a><!--{/if}--></strong></th>
 					</tr>
 				</tbody>
 				<!--{/if}-->
@@ -209,6 +209,43 @@
 				</tbody>
 				<!--{/if}-->
 				<tbody id="$thread[id]">
+					<tr>
+						<td class="icon">
+						<!--{if $forum['ismoderator']}-->
+							<!--{if $thread['fid'] == $fid && $thread['digest'] >= 0}-->
+								<!--{if $thread['displayorder'] <= 3 || $adminid == 1}-->
+									<input onclick="tmodclick(this)" class="checkbox" type="checkbox" name="moderate[]" value="$thread[tid]" />
+								<!--{else}-->
+									<input class="checkbox" type="checkbox" disabled="disabled" />
+								<!--{/if}-->
+							<!--{else}-->
+								<input class="checkbox" type="checkbox" disabled="disabled" />
+							<!--{/if}-->
+						<!--{/if}-->
+						</td>
+
+						<td class="author" colspan="2">
+							<cite>
+							<!--{if $thread['authorid'] && $thread['author']}-->
+								<a href="space.php?uid=$thread[authorid]">$thread[author]</a>
+							<!--{else}-->
+								<!--{if $forum['ismoderator']}-->
+									<a href="space.php?uid=$thread[authorid]">{lang anonymous}</a>
+								<!--{else}-->
+									{lang anonymous}
+								<!--{/if}-->
+							<!--{/if}-->
+							<em>$thread[dateline]</em>
+							</cite>
+						</td>
+						<td class="nums"><strong>$thread[replies]</strong>/<em>$thread[views]</em></td>
+						<td class="author">
+							<cite>
+							<!--{if $thread['lastposter']}--><a href="{if $thread[digest] != -2}space.php?username=$thread[lastposterenc]{else}viewthread.php?tid=$thread[tid]&amp;page={echo max(1, $thread[pages]);}{/if}">$thread[lastposter]</a><!--{else}-->{lang anonymous}<!--{/if}-->
+							<a href="{if $thread[digest] != -2}redirect.php?tid=$thread[tid]&amp;goto=lastpost$highlight#lastpost{else}viewthread.php?tid=$thread[tid]&amp;page={echo max(1, $thread[pages]);}{/if}"><em>&nbsp;$thread[lastpost]</em></a>
+							</cite>
+						</td>
+					</tr>
 					<tr>
 						<td class="folder">
 							<a href="viewthread.php?tid=$thread[tid]&amp;extra=$extra" title="{lang target_blank}" target="_blank">
@@ -235,20 +272,7 @@
 							$thread['icon']
 						<!--{/if}-->
 						</td>
-						<!--{if $forum['ismoderator']}-->
-						<td class="icon">
-							<!--{if $thread['fid'] == $fid && $thread['digest'] >= 0}-->
-								<!--{if $thread['displayorder'] <= 3 || $adminid == 1}-->
-									<input onclick="tmodclick(this)" class="checkbox" type="checkbox" name="moderate[]" value="$thread[tid]" />
-								<!--{else}-->
-									<input class="checkbox" type="checkbox" disabled="disabled" />
-								<!--{/if}-->
-							<!--{else}-->
-								<input class="checkbox" type="checkbox" disabled="disabled" />
-							<!--{/if}-->
-						</td>
-						<!--{/if}-->
-						<th class="subject $thread[folder]">
+						<th colspan="3" class="subject $thread[folder]">
 							<label>{$pluginhooks[forumdisplay_thread][$key]}&nbsp;</label>
 							<!--{if $thread['moved']}-->
 								<!--{if $forum['ismoderator']}-->
@@ -292,25 +316,6 @@
 								<span class="threadpages">$thread[multipage]</span>
 							<!--{/if}-->
 						</th>
-						<td class="author">
-							<cite>
-							<!--{if $thread['authorid'] && $thread['author']}-->
-								<a href="space.php?uid=$thread[authorid]">$thread[author]</a>
-							<!--{else}-->
-								<!--{if $forum['ismoderator']}-->
-									<a href="space.php?uid=$thread[authorid]">{lang anonymous}</a>
-								<!--{else}-->
-									{lang anonymous}
-								<!--{/if}-->
-							<!--{/if}-->
-							</cite>
-							<em>$thread[dateline]</em>
-						</td>
-						<td class="nums"><strong>$thread[replies]</strong>/<em>$thread[views]</em></td>
-						<td class="lastpost">
-							<cite><!--{if $thread['lastposter']}--><a href="{if $thread[digest] != -2}space.php?username=$thread[lastposterenc]{else}viewthread.php?tid=$thread[tid]&amp;page={echo max(1, $thread[pages]);}{/if}">$thread[lastposter]</a><!--{else}-->{lang anonymous}<!--{/if}--></cite>
-							<em><a href="{if $thread[digest] != -2}redirect.php?tid=$thread[tid]&amp;goto=lastpost$highlight#lastpost{else}viewthread.php?tid=$thread[tid]&amp;page={echo max(1, $thread[pages]);}{/if}">$thread[lastpost]</a></em>
-						</td>
 					</tr>
 				</tbody>
 				<!--{/loop}-->

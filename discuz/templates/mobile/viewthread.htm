@@ -62,12 +62,10 @@ $pluginhooks[viewthread_top]
 <div class="forumcontrol">
 	<table cellspacing="0" cellpadding="0">
 		<tr>
-			<td class="modaction">
+			<td>
 				<!--{if $forum['ismoderator'] && $modopt}-->
 					<span id="modopt" onclick="$('modopt').id = 'modopttmp';this.id = 'modopt';showMenu({'ctrlid':this.id})" class="dropmenu">{lang admin_modoptions}</span>
 				<!--{/if}-->
-			</td>
-			<td>
 				$multipage
 				<span class="pageback"{if $visitedforums} id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id})"{/if}><a href="$upnavlink">{lang return_forumdisplay}</a></span>
 				<!--{if $allowpostreply}-->
@@ -130,12 +128,10 @@ $tagscript
 <div class="forumcontrol s_clear">
 	<table cellspacing="0" cellpadding="0" <!--{if $fastpost}-->class="narrow"<!--{/if}-->>
 		<tr>
-			<td class="modaction">
+			<td>
 				<!--{if $forum['ismoderator'] && $modopt}-->
 				<span id="modopttmp" onclick="$('modopt').id = 'modopttmp';this.id = 'modopt';showMenu({'ctrlid':this.id})" class="dropmenu">{lang admin_modoptions}</span>
 				<!--{/if}-->
-			</td>
-			<td>
 				$multipage
 				<span class="pageback"{if $visitedforums} id="visitedforums" onmouseover="$('visitedforums').id = 'visitedforumstmp';this.id = 'visitedforums';showMenu({'ctrlid':this.id})"{/if}><a href="$upnavlink">{lang return_forumdisplay}</a></span>
 				<!--{if !$fastpost}-->

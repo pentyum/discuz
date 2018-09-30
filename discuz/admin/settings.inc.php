@@ -1959,11 +1959,11 @@ EOT;
     if ($operation == 'uc' && is_writeable('./config.inc.php') && $isfounder) {
         $ucdbpassnew = $settingsnew['uc']['dbpass'] == '********' ? UC_DBPW : $settingsnew['uc']['dbpass'];
         if ($settingsnew['uc']['connect']) {
-            $uc_dblink = @mysql_connect($settingsnew['uc']['dbhost'], $settingsnew['uc']['dbuser'], $ucdbpassnew, 1);
+            $uc_dblink = @mysqli_connect($settingsnew['uc']['dbhost'], $settingsnew['uc']['dbuser'], $ucdbpassnew);
             if (! $uc_dblink) {
                 cpmsg('uc_database_connect_error', '', 'error');
             } else {
-                mysql_close($uc_dblink);
+                mysqli_close($uc_dblink);
             }
         }
         

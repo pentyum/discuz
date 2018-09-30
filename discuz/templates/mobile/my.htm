@@ -8,8 +8,27 @@
 	<!--{elseif $item == 'buddylist'}-->{lang my_buddylist}<!--{/if}-->
 	<!--{if $srchfid}--></a> &raquo; $forumname<!--{/if}-->
 </div>
-<div id="wrap" class="wrap with_side s_clear">
+<div id="wrap" class="wrap">
 	<div class="main">
+	<script type="text/javascript" src="{$jspath}jquery.mb.flipText.js?{VERHASH}"></script>
+	<script type="text/javascript" src="{$jspath}mbExtruder.js?{VERHASH}"></script>
+	<script type="text/javascript">
+	jQuery(function(){
+		jQuery("#extruderRight").buildMbExtruder({
+			position:"right",
+			width:180,
+			extruderOpacity:.8,
+			textOrientation:"tb",
+			onExtOpen:function(){},
+			onExtContentLoad:function(){},
+			onExtClose:function(){}
+		});
+		jQuery.fn.changeLabel=function(text){
+			jQuery(this).find(".flapLabel").html(text);
+			jQuery(this).find(".flapLabel").mbFlipText();
+		};
+	});
+	</script>
 		<div class="content">
 		<!--{if $item != 'buddylist'}-->
 			<div class="itemtitle s_clear">
@@ -102,8 +121,10 @@
 			</ul>
 		</div>
 	</div>
-	<div class="side">
-		{subtemplate personal_navbar}
+	<div id="extruderRight" class="{title:'展开'}">
+		<div class="side">
+			{subtemplate personal_navbar}
+		</div>
 	</div>
 </div>
 

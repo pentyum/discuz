@@ -8,10 +8,6 @@ var disablepostctrl = parseInt('$disablepostctrl');
 <form method="post" id="fastpostform" action="post.php?action=reply&amp;fid=$fid&amp;tid=$tid&amp;extra=$extra&amp;replysubmit=yes<!--{if $ordertype != 1}-->&infloat=yes&handlekey=fastpost<!--{/if}-->" <!--{if $ordertype != 1}-->onSubmit="return fastpostvalidate(this)"<!--{/if}-->>
 	<table cellspacing="0" cellpadding="0">
 		<tr>
-			<td class="postauthor">
-				<!--{if $discuz_uid}--><div class="avatar">{echo discuz_uc_avatar($discuz_uid)}</div><!--{/if}-->
-				$pluginhooks[viewthread_fastpost_side]
-			</td>
 			<td class="postcontent">
 				$pluginhooks[viewthread_fastpost_content]
 				<input type="hidden" name="formhash" value="{FORMHASH}" />
