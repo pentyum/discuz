@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 29, 2018, 12:14
+//Created: Sep 30, 2018, 3:57
 //Identify: b2f0268926c49433d49d58f6034f3a35
 
 $_DCACHE['magics'] = array (

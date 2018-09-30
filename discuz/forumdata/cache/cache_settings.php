@@ -1,7 +1,7 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 29, 2018, 12:14
-//Identify: 8103b435b5db9fd1aa8740a130d3a0cd
+//Created: Sep 30, 2018, 3:57
+//Identify: fb714eef463c775e84f236fde0cf33da
 
 $_DCACHE['settings'] = array (
   'accessemail' => '',
@@ -479,12 +479,13 @@ $_DCACHE['settings'] = array (
   'totalmembers' => '1',
   'lastmember' => 'admin',
   'cachethreadon' => 0,
-  'cronnextrun' => '1538236800',
+  'cronnextrun' => '1538323200',
   'styles' => 
   array (
     1 => '默认风格',
+    2 => '手机版',
   ),
-  'stylejumpstatus' => false,
+  'stylejumpstatus' => true,
   'globaladvs' => 
   array (
   ),

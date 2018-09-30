@@ -1,7 +1,7 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 29, 2018, 12:14
-//Identify: 1ea271f3f66c94a9258e44c092488579
+//Created: Sep 30, 2018, 12:21
+//Identify: cf583d04e7df335091e0c2ea7a0911f5
 
 define('STYLEID', '1');
 define('NAME', '默认风格');
@@ -64,8 +64,9 @@ define('FLOATBGCODE', 'background: #F1F5FA');
 define('BOARDLOGO', '<img src="images/default/logo.gif" alt="Discuz! Board" border="0" />');
 define('BOLD', 'bold');
 define('IMAGEMAXWIDTH', '600');
-define('VERHASH', '96q');
+define('VERHASH', '266');
 $styleicons = array (
   1 => '#1E4B7E',
+  2 => '#1E4B7E',
 );
 ?>
