@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 30, 2018, 7:13
+//Created: Oct 9, 2018, 5:32
 //Identify: 77616c1ebe2627d33399479015e52974
 
 $groupid = '17';

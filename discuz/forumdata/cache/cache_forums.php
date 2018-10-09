@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 30, 2018, 7:13
+//Created: Oct 9, 2018, 5:32
 //Identify: 7dd93f1405755f05587f3d2449aa8e80
 
 $_DCACHE['forums'] = array (

@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 30, 2018, 7:13
+//Created: Oct 9, 2018, 5:32
 //Identify: cf081d60c6396579ed2929da6ffec9c5
 
 $_DCACHE['secqaa'] = array (

@@ -1,6 +1,6 @@
 <?php
 //Discuz! cache file, DO NOT modify me!
-//Created: Sep 30, 2018, 7:13
+//Created: Oct 9, 2018, 5:32
 //Identify: 95bfd0932b3197493de3f985ecf064e2
 
 $_DCACHE['advs'] = array (
